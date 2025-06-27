@@ -24,7 +24,13 @@ function removeItem(event) {
 // add item
 addProductButton.addEventListener("click", (e) => {
     e.preventDefault();
+
     const productName = productNameInput.value.trim();
+
+    if (!productName) {
+        alert("You need to tell us what product it is!");
+        return;
+    }
 
     const newLi = document.createElement("li");
     newLi.className = "product";
