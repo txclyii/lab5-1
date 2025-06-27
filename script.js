@@ -15,7 +15,7 @@ function updateTotalPrice(amount) {
 // Function to remove an item
 function removeItem(event) {
   const item = event.target.closest('li');
-  const price = parseFloat(item.dataset.price);
+  const price = parseFloat(item.dataset.price); // ask abt dataset
   updateTotalPrice(-price);
   item.remove();
 }
@@ -39,8 +39,10 @@ addProductButton.addEventListener("click", (e) => {
     const productPrice = productPriceInput.value.trim();
     const price = document.createElement("input");
     price.type = "number";
+    price.disabled = true;
     price.className = "price";
     price.value = productPrice;
+    newLi.dataset.price = productPrice;
     newLi.appendChild(price);
 
     
@@ -51,4 +53,5 @@ addProductButton.addEventListener("click", (e) => {
     newLi.appendChild(deleteButton);
 
     cart.appendChild(newLi);
+    updateTotalPrice(parseFloat(productPrice));
 })
